@@ -1,21 +1,23 @@
 void setup() {
-  for (int i=2,i<11,i++){pinmode(i,OUTPUT);}
-  for (int i=11,i<18,i++){pinmode(i,INPUT);}
+  for (int i=2; i<11;i++){pinMode(i,OUTPUT);}
+  for (int x=14;x<23;x++){pinMode(x,INPUT_PULLUP);}
   Serial.begin(115200);
 }
 
 void loop() {
-  int scan=0
-  int sig=0
-  int key[1]
-  for (int scan=2,scan<11,scan++){
-    digitalWrite(i,HIGH);
-    for (int sig=11,sig<18,sig++){
-      if (digitalRead(sig) == 1){
-        key[0] = scan
-        key[1] = sig
+  delay(10);
+  int scan=0;
+  int sig=0;
+  for (scan=2; scan<11;scan++){
+    digitalWrite(scan,HIGH);
+    for (sig=14;sig<23;sig++){
+      if (digitalRead(sig) == 0){
+        Serial.print(scan);
+        Serial.print(" and ");
+        Serial.println(sig);
        }
+     digitalWrite(scan,LOW);
     }
   }
-  Serial.print(key);
+  
 }
